@@ -1,0 +1,24 @@
+--Create a Beauty store database
+
+CREATE TABLE lipstick4all(id INTEGER PRIMARY KEY, name TEXT, color TEXT, description TEXT, quantity INTEGER, price INTEGER, popularity INTEGER);
+
+INSERT INTO lipstick4all VALUES(1, "apples4u", "red", "shiny", 40, 25, 35);
+INSERT INTO lipstick4all VALUES(2, "pinkfluff", "pink", "matte", 40, 20, 30);
+INSERT INTO lipstick4all VALUES(3, "tantan", "nude", "matte", 40, 17, 32);
+INSERT INTO lipstick4all VALUES(4, "brownbutter", "brown", "matte", 20, 7, 8);
+INSERT INTO lipstick4all VALUES(5, "greenapple", "green", "shiny", 15, 5, 2);
+INSERT INTO lipstick4all VALUES(6, "heart", "red", "matte", 40, 25, 32);
+INSERT INTO lipstick4all VALUES(7, "cottoncandy", "pink", "matte", 40, 20, 31);
+INSERT INTO lipstick4all VALUES(8, "barelythere", "nude", "shiny", 40, 17, 28);
+INSERT INTO lipstick4all VALUES(9, "brownlove", "brown", "shiny", 20, 12, 13);
+
+--Display the database ordered by price
+SELECT * from lipstick4all 
+ORDER by price;
+
+--What are the 5 most popular items?
+SELECT name, price, popularity
+FROM lipstick4all
+order by popularity desc
+limit 5; 
+
