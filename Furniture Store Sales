@@ -129,11 +129,13 @@ from sales
 group by "country"
 having count(*) >4;
 
+--Display avg, min, and max prices
 Select price from sales;
 select avg(price) from sales;
 select min(price) from sales;
 select max(price) from sales;
 
+--Display sales from United States only
 Select avg(price), min(price), max(price) from sales where country is "United states";
 
 Select "product", COUNT(*)
