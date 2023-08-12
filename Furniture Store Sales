@@ -143,6 +143,7 @@ from sales
 group by "product"
 having count(*) >10;
 
+--Display transaction dates and prices from the U.S. and group them by date
 SELECT "transaction_date", "price" from sales
 where "country" is "United states"
 group by "transaction_date";
@@ -156,10 +157,12 @@ from sales
 group by "country"
 having count(*) >4;
 
+--Display total price of over 1200
 SELECT sum(price), country from sales
 Where price >1200
 group by "country";
 
+--Display which payment type is approved and denied
 SELECT payment_type,
     CASE
     WHEN payment_type = "Visa" THEN "Approved"
