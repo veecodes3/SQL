@@ -129,8 +129,8 @@ from sales
 group by "country"
 having count(*) >4;
 
---Display avg, min, and max prices.
-Select price from sales;
+--Display sum, avg, min, and max prices.
+Select sum(price) from sales;
 select avg(price) from sales;
 select min(price) from sales;
 select max(price) from sales;
@@ -143,14 +143,14 @@ from sales
 group by "product"
 having count(*) >10;
 
---Display transaction dates and prices from the U.S. and group them by date.
-SELECT "transaction_date", "price" from sales
-where "country" is "United states"
+--Display transaction dates and prices from the Ireland and group them by date.
+SELECT "transaction_date", "price", "country" from sales
+where "country" is "Ireland"
 group by "transaction_date";
 
-SELECT * from sales Where country is "United states" and "price" >2000;
+SELECT * from sales Where country is "United states" and "price" >3500;
 
-SELECT * from sales where "price" >3000 or "country" is "Canada";
+SELECT * from sales where "price" >5000 or "country" is "United Arab Emirates";
 
 Select "country", COUNT(*)
 from sales
@@ -171,3 +171,4 @@ SELECT payment_type,
 END as classification
 FROM sales
 Group by payment_type;
+
