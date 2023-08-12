@@ -121,7 +121,7 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/14/09 11:19','Chair',1200,'Visa','Jennifer','Jumeira','Dubayy','United Arab Emirates','1/14/09 10:44','1/14/09 21:26',25.2097222,55.2477778);
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/13/09 19:39','Chair',1200,'Visa','Jolene','Englewood','CO','United states','1/6/09 22:00','1/14/09 22:02',39.64778,-104.98722);
 
---Display only relevant information
+--Display only relevant information.
 Select transaction_date, product, price, payment_type, name, city, state, country from sales;
 
 Select "country", COUNT(*)
@@ -129,13 +129,13 @@ from sales
 group by "country"
 having count(*) >4;
 
---Display avg, min, and max prices
+--Display avg, min, and max prices.
 Select price from sales;
 select avg(price) from sales;
 select min(price) from sales;
 select max(price) from sales;
 
---Display sales from United States only
+--Display sales from United States only.
 Select avg(price), min(price), max(price) from sales where country is "United states";
 
 Select "product", COUNT(*)
@@ -143,7 +143,7 @@ from sales
 group by "product"
 having count(*) >10;
 
---Display transaction dates and prices from the U.S. and group them by date
+--Display transaction dates and prices from the U.S. and group them by date.
 SELECT "transaction_date", "price" from sales
 where "country" is "United states"
 group by "transaction_date";
@@ -157,16 +157,17 @@ from sales
 group by "country"
 having count(*) >4;
 
---Display total price of over 1200
+--Display total price of over 1200.
 SELECT sum(price), country from sales
 Where price >1200
 group by "country";
 
---Display which payment type is approved and denied
+--Display which payment type is classified as approved and denied.
 SELECT payment_type,
     CASE
     WHEN payment_type = "Visa" THEN "Approved"
     WHEN payment_type = "Mastercard" THEN "Approved"
     ELSE "denied"
-END as payment_type
-FROM sales;
+END as classification
+FROM sales
+Group by payment_type;
