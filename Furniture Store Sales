@@ -122,12 +122,15 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/13/09 19:39','Chair',1200,'Visa','Jolene','Englewood','CO','United states','1/6/09 22:00','1/14/09 22:02',39.64778,-104.98722);
 
 --Display only relevant information.
-Select transaction_date, product, price, payment_type, name, city, state, country from sales;
+SELECT
+transaction_date, product, price, payment_type, name, city, state, country 
+FROM sales;
 
-Select "country", COUNT(*)
+Select "country", COUNT(*) AS num_sales
 from sales
 group by "country"
-having count(*) >4;
+having count (*) >3
+order by num_sales DESC;
 
 --Display sum, avg, min, and max prices.
 Select sum(price) from sales;
