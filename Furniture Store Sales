@@ -122,59 +122,69 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/13/09 19:39','Chair',1200,'Visa','Jolene','Englewood','CO','United states','1/6/09 22:00','1/14/09 22:02',39.64778,-104.98722);
 
 --Display only relevant information.
-SELECT
-transaction_date, product, price, payment_type, name, city, state, country 
+SELECT transaction_date, product, price, payment_type, name, city, state, country 
 FROM sales;
 
---Display countries that have more than 3 sales.
-Select "country", COUNT(*) AS num_sales
-from sales
-group by "country"
-having count (*) >3
-order by num_sales DESC;
+--Which countries have more than 3 sales?
+SELECT "country", COUNT(*) 
+AS num_sales
+FROM sales
+GROUP by "country"
+HAVING count (*) >3
+ORDER by num_sales DESC;
 
---Display sum, avg, min, and max prices.
-Select sum(price) from sales;
-select avg(price) from sales;
-select min(price) from sales;
-select max(price) from sales;
-
---Display sales from United States only.
-Select avg(price), min(price), max(price) from sales where country is "United states";
-
---Display the amount of products over 10.
-Select "product", COUNT(*)
-from sales
-group by "product"
-having count(*) >10;
-
---Display transaction dates and prices from the Ireland and group them by date.
-SELECT "transaction_date", "price", "country" from sales
-where "country" is "Ireland"
-group by "transaction_date";
-
-SELECT * from sales Where country is "United states" and "price" >3500;
-
-SELECT * from sales where "price" >5000 or "country" is "United Arab Emirates";
-
---Dispaly the countries that have more than 4 sales.
-Select "country", COUNT(*)
-from sales
-group by "country"
-having count(*) >4;
-
---Display total price of over 1200.
-SELECT sum(price), country from sales
-Where price >1200
-group by "country";
+--How many transactions by payment type?
+SELECT payment_type, COUNT(*) 
+AS transaction_count
+FROM sales
+GROUP BY payment_type;
 
 --Display which payment type is classified as approved and denied.
 SELECT payment_type,
     CASE
     WHEN payment_type = "Visa" THEN "Approved"
     WHEN payment_type = "Mastercard" THEN "Approved"
-    ELSE "denied"
+    ELSE "Denied"
 END as classification
 FROM sales
-Group by payment_type;
+GROUP by payment_type;
+
+--What are the top selling products?
+SELECT product, COUNT(*) AS sales_count
+FROM sales
+GROUP BY product
+ORDER BY sales_count DESC;
+
+--What are the total sales amounts over 1200 by country and payment type?
+SELECT country, payment_type, SUM(price) 
+AS total_sales_amount
+FROM sales
+WHERE price >1200
+GROUP BY country, payment_type;
+
+--Display the sales from the Unites States that are over 3500.
+SELECT * from sales 
+WHERE country is "United states" 
+AND "price" >3500;
+
+--Display sales over 5000 or from the United Arab Emirates.
+SELECT * from sales 
+WHERE "price" >5000 
+OR "country" is "United Arab Emirates";
+
+--Display total of sales by country over 1200.
+SELECT sum(price), country 
+FROM sales
+WHERE price >1200
+GROUP by "country";
+
+--Display sum, avg, min, and max prices of all sales.
+SELECT sum(price), avg(price), min(price), max(price) 
+FROM sales;
+
+--Display average, minimum, and maximum prices from only the United States.
+SELECT avg(price), min(price), max(price) 
+FROM sales 
+WHERE country is "United states";
+
 
