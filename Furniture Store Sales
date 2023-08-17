@@ -126,6 +126,7 @@ SELECT
 transaction_date, product, price, payment_type, name, city, state, country 
 FROM sales;
 
+--Display countries that have more than 3 sales.
 Select "country", COUNT(*) AS num_sales
 from sales
 group by "country"
@@ -141,6 +142,7 @@ select max(price) from sales;
 --Display sales from United States only.
 Select avg(price), min(price), max(price) from sales where country is "United states";
 
+--Display the amount of products over 10.
 Select "product", COUNT(*)
 from sales
 group by "product"
@@ -155,6 +157,7 @@ SELECT * from sales Where country is "United states" and "price" >3500;
 
 SELECT * from sales where "price" >5000 or "country" is "United Arab Emirates";
 
+--Dispaly the countries that have more than 4 sales.
 Select "country", COUNT(*)
 from sales
 group by "country"
