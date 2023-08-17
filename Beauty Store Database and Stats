@@ -14,11 +14,29 @@ INSERT INTO lipstick4all VALUES(9, "brownlove", "brown", "shiny", 20, 12, 13);
 
 --Display the database ordered by price
 SELECT * from lipstick4all 
-ORDER by price;
+ORDER by price DESC;
 
---What are the 5 most popular items?
+--What are the top 5 most poplular lipsticks?
 SELECT name, price, popularity
 FROM lipstick4all
-order by popularity desc
+ORDER by popularity DESC
 limit 5; 
+
+--How many lipsticks of each color are in stock?
+SELECT color, SUM(quantity) 
+AS total_stock 
+FROM lipstick4all 
+GROUP BY color 
+ORDER by total_stock DESC;
+
+--What is the average price of all lipsticks?
+SELECT ROUND(AVG(price), 2) 
+AS average_price 
+FROM lipstick4all;
+
+--What is the total quantity of each texture (matte, shiny)?
+SELECT description, SUM(quantity) 
+AS total_quantity 
+FROM lipstick4all 
+GROUP BY description;
 
