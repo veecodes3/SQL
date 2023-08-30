@@ -1,0 +1,59 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE moviestars(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER, height_inches INTEGER, eyecolor TEXT);
+    
+INSERT INTO moviestars Values(1, "Matt Damon", 52, 70, "blue");
+INSERT INTO moviestars Values(2, "Ben Affleck", 51, 74, "hazel");
+INSERT INTO moviestars Values(3, "Brad Pitt", 59, 71, "blue");
+INSERT INTO moviestars Values(4, "Jason Momoa", 44, 76, "green");
+INSERT INTO moviestars Values(5, "Henry Cavill", 40, 73,"blue");
+INSERT INTO moviestars Values(6, "Johnny Depp", 60, 70, "brown");
+INSERT INTO moviestars Values(7, "Matt Bomer", 45, 71, "blue");
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, actor TEXT, release_year INTEGER, genre TEXT);
+
+INSERT INTO movies VALUES (1, "Good Will Hunting", "Matt Damon", 1997, "drama");
+INSERT INTO movies VALUES (2, "Rounders", "Matt Damon", 1998, "drama"); 
+INSERT INTO movies VALUES (3, "Saving Private Ryan", "Matt Damon", 1998, "action");
+INSERT INTO movies VALUES (4, "The Bourne Identity", "Matt Damon", 2002, "action");
+INSERT INTO movies VALUES (5, "The Bourne Supremacy", "Matt Damon", 2004, "action");
+INSERT INTO movies VALUES (6, "The Bourne Ultimatum", "Matt Damon", 2007, "action");
+INSERT INTO movies VALUES (7, "The Bourne Legacy", "Matt Damon", 2012, "action");
+INSERT INTO movies VALUES (8, "Jason Bourne", "Matt Damon", 2016, "action");
+INSERT INTO movies VALUES (9, "Gone Girl", "Ben Affleck", 2014, "drama");
+INSERT INTO movies VALUES (10, "The Town", "Ben Affleck", 2010, "thriller");
+INSERT INTO movies VALUES (11, "Armageddon", "Ben Affleck", 1998, "adventure");
+INSERT INTO movies VALUES (12, "Pearl Harbor", "Ben Affleck", 2001, "drama");
+INSERT INTO movies VALUES (13, "Deep Water", "Ben Affleck", 2022, "thriller");
+INSERT INTO movies VALUES (14, "Fight Club", "Brad Pitt", 1999, "action");
+INSERT INTO movies VALUES (15, "Seven", "Brad Pitt", 1995, "mystery");
+INSERT INTO movies VALUES (16, "Ocean's Eleven", "Brad Pitt", 2001, "adventure");
+INSERT INTO movies VALUES (17, "Mr. & Mrs. Smith", "Brad Pitt", 2005, "action");
+INSERT INTO movies VALUES (18, "Dune", "Jason Momoa", 2021, "science fiction");
+INSERT INTO movies VALUES (19, "Braven", "Jason Momoa", 2018, "action" );
+INSERT INTO movies VALUES (20, "Aquaman", "Jason Momoa", 2018, "adventure");
+INSERT INTO movies VALUES (21, "I Capture the Castle", "Henry Cavill", 2003, "novel");
+INSERT INTO movies VALUES (22, "Man of Steel", "Henry Cavill", 2013, "adventure");
+INSERT INTO movies VALUES (23, "Sand Castle", "Henry Cavill", 2017, "drama");
+INSERT INTO movies VALUES (24, "Edward Scissorhands", "Johnny Depp", 1990, "drama");
+INSERT INTO movies VALUES (25, "What's Eating Gilbert Grape", "Johnny Depp", 1993, "drama");
+INSERT INTO movies VALUES (26, "Platoon", "Johnny Depp", 1986, "action");
+INSERT INTO movies VALUES (27, "Pirates of the Caribbean 1", "Johnny Depp", 2003, "adventure");
+INSERT INTO movies VALUES (28, "The Tourist", "Johnny Depp", 2010, "action");
+INSERT INTO movies VALUES (29, "Magic Mike", "Matt Bomer", 2012, "drama");
+INSERT INTO movies VALUES (30, "The Magnificent Seven", "Matt Bomer", 2016, "western");
+INSERT INTO movies VALUES (31, "The Nice Guys", "Matt Bomer", 2016, "comedy");
+
+SELECT * FROM moviestars
+Order BY age;
+
+SELECT ms.fullname AS actor, m.name AS movie_name
+FROM moviestars ms
+JOIN movies m ON ms.fullname = m.actor;
+
+SELECT m.name AS movie_name, ms.fullname AS actor_name, m.release_year, m.genre
+FROM movies m
+JOIN moviestars ms ON m.actor = ms.fullname;
