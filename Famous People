@@ -1,4 +1,4 @@
---Create a table about famous people and what they do here
+/* Create table about the people and what they do here */
 
 CREATE TABLE moviestars(id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, age INTEGER, height_inches INTEGER, eyecolor TEXT);
     
@@ -10,39 +10,48 @@ INSERT INTO moviestars Values(5, "Henry Cavill", 40, 73,"blue");
 INSERT INTO moviestars Values(6, "Johnny Depp", 60, 70, "brown");
 INSERT INTO moviestars Values(7, "Matt Bomer", 45, 71, "blue");
 
-CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, actor TEXT, release_year INTEGER, genre TEXT);
+CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, actor TEXT, release_year INTEGER, sequel_id INTEGER, genre TEXT);
 
-INSERT INTO movies VALUES (1, "Good Will Hunting", "Matt Damon", 1997, "drama");
-INSERT INTO movies VALUES (2, "Rounders", "Matt Damon", 1998, "drama"); 
-INSERT INTO movies VALUES (3, "Saving Private Ryan", "Matt Damon", 1998, "action");
-INSERT INTO movies VALUES (4, "The Bourne Identity", "Matt Damon", 2002, "action");
-INSERT INTO movies VALUES (5, "The Bourne Supremacy", "Matt Damon", 2004, "action");
-INSERT INTO movies VALUES (6, "The Bourne Ultimatum", "Matt Damon", 2007, "action");
-INSERT INTO movies VALUES (7, "The Bourne Legacy", "Matt Damon", 2012, "action");
-INSERT INTO movies VALUES (8, "Jason Bourne", "Matt Damon", 2016, "action");
-INSERT INTO movies VALUES (9, "Gone Girl", "Ben Affleck", 2014, "drama");
-INSERT INTO movies VALUES (10, "The Town", "Ben Affleck", 2010, "thriller");
-INSERT INTO movies VALUES (11, "Armageddon", "Ben Affleck", 1998, "adventure");
-INSERT INTO movies VALUES (12, "Pearl Harbor", "Ben Affleck", 2001, "drama");
-INSERT INTO movies VALUES (13, "Deep Water", "Ben Affleck", 2022, "thriller");
-INSERT INTO movies VALUES (14, "Fight Club", "Brad Pitt", 1999, "action");
-INSERT INTO movies VALUES (15, "Seven", "Brad Pitt", 1995, "mystery");
-INSERT INTO movies VALUES (16, "Ocean's Eleven", "Brad Pitt", 2001, "adventure");
-INSERT INTO movies VALUES (17, "Mr. & Mrs. Smith", "Brad Pitt", 2005, "action");
-INSERT INTO movies VALUES (18, "Dune", "Jason Momoa", 2021, "science fiction");
-INSERT INTO movies VALUES (19, "Braven", "Jason Momoa", 2018, "action" );
-INSERT INTO movies VALUES (20, "Aquaman", "Jason Momoa", 2018, "adventure");
-INSERT INTO movies VALUES (21, "I Capture the Castle", "Henry Cavill", 2003, "novel");
-INSERT INTO movies VALUES (22, "Man of Steel", "Henry Cavill", 2013, "adventure");
-INSERT INTO movies VALUES (23, "Sand Castle", "Henry Cavill", 2017, "drama");
-INSERT INTO movies VALUES (24, "Edward Scissorhands", "Johnny Depp", 1990, "drama");
-INSERT INTO movies VALUES (25, "What's Eating Gilbert Grape", "Johnny Depp", 1993, "drama");
-INSERT INTO movies VALUES (26, "Platoon", "Johnny Depp", 1986, "action");
-INSERT INTO movies VALUES (27, "Pirates of the Caribbean 1", "Johnny Depp", 2003, "adventure");
-INSERT INTO movies VALUES (28, "The Tourist", "Johnny Depp", 2010, "action");
-INSERT INTO movies VALUES (29, "Magic Mike", "Matt Bomer", 2012, "drama");
-INSERT INTO movies VALUES (30, "The Magnificent Seven", "Matt Bomer", 2016, "western");
-INSERT INTO movies VALUES (31, "The Nice Guys", "Matt Bomer", 2016, "comedy");
+INSERT INTO movies (id, name, actor, release_year, sequel_id, genre) VALUES
+    (1, "Good Will Hunting", "Matt Damon", 1997, null, "drama"),
+    (2, "Rounders", "Matt Damon", 1998, null, "drama"),
+    (3, "Saving Private Ryan", "Matt Damon", 1998, null, "action"),
+    (4, "The Bourne Identity", "Matt Damon", 2002, 1, "action"),
+    (5, "The Bourne Supremacy", "Matt Damon", 2004, 2, "action"),
+    (6, "The Bourne Ultimatum", "Matt Damon", 2007, 3, "action"),
+    (7, "The Bourne Legacy", "Matt Damon", 2012, 4, "action"),
+    (8, "Jason Bourne", "Matt Damon", 2016, 5, "action"),
+    (9, "Gone Girl", "Ben Affleck", 2014, null, "drama"),
+    (10, "The Town", "Ben Affleck", 2010, null, "thriller"),
+    (11, "Armageddon", "Ben Affleck", 1998, null, "adventure"),
+    (12, "Pearl Harbor", "Ben Affleck", 2001, null, "drama"),
+    (13, "Deep Water", "Ben Affleck", 2022, null, "thriller"),
+    (14, "Fight Club", "Brad Pitt", 1999, null, "action"),
+    (15, "Seven", "Brad Pitt", 1995, null, "mystery"),
+    (16, "Ocean's Eleven", "Brad Pitt", 2001, 1, "adventure"),
+    (17, "Ocean's Twelve", "Brad Pitt", 2001, 2, "adventure"),
+    (18, "Ocean's Thirteen", "Brad Pitt", 2001, 3, "adventure"),
+    (19, "Mr. & Mrs. Smith", "Brad Pitt", 2005, null, "action"),
+    (20, "Dune", "Jason Momoa", 2021, null, "science fiction"),
+    (21, "Braven", "Jason Momoa", 2018, null, "action"),
+    (22, "Aquaman", "Jason Momoa", 2018, null, "adventure"),
+    (23, "I Capture the Castle", "Henry Cavill", 2003, null, "novel"),
+    (24, "Man of Steel", "Henry Cavill", 2013, null, "adventure"),
+    (25, "Sand Castle", "Henry Cavill", 2017, null, "drama"),
+    (26, "Edward Scissorhands", "Johnny Depp", 1990, null, "drama"),
+    (27, "What's Eating Gilbert Grape", "Johnny Depp", 1993, null, "drama"),
+    (28, "Platoon", "Johnny Depp", 1986, null, "action"),
+    (29, "Pirates of the Caribbean: The Curse of the Black Pearl", "Johnny Depp", 2003, 1, "adventure"),
+    (30, "Pirates of the Caribbean: Dead Man's Chest", "Johnny Depp", 2006, 2, "adventure"),
+    (31, "Pirates of the Caribbean: At World's End", "Johnny Depp", 2007, 3, "adventure"),
+    (32, "Pirates of the Caribbean: On Stranger Tides", "Johnny Depp", 2011, 4, "adventure"),
+    (33, "Pirates of the Caribbean: Dead Men Tell No Tales", "Johnny Depp", 2017, 5, "adventure"),
+    (34, "The Tourist", "Johnny Depp", 2010, null, "action"),
+    (35, "Magic Mike", "Matt Bomer", 2012, 1, "drama"),
+    (36, "Magic Mike XXL", "Matt Bomer", 2012, 2, "drama"),
+    (37, "Magic Mike's Last Dance", "Matt Bomer", 2012, 3, "drama"),
+    (38, "The Magnificent Seven", "Matt Bomer", 2016, null, "western"),
+    (39, "The Nice Guys", "Matt Bomer", 2016, null, "comedy");
 
 --Order movie stars by age.
 SELECT * FROM moviestars
@@ -52,6 +61,37 @@ SELECT ms.fullname AS actor, m.name AS movie_name
 FROM moviestars ms
 JOIN movies m ON ms.fullname = m.actor;
 
-SELECT m.name AS movie_name, ms.fullname AS actor_name, m.release_year, m.genre
+SELECT m.name AS movie_name, ms.fullname AS actor_name, m.release_year, sequel_id, m.genre
 FROM movies m
 JOIN moviestars ms ON m.actor = ms.fullname;
+
+SELECT m1.name AS movie_name, m1.actor AS actor, m1.release_year AS release_year, m1.sequel_id AS movie_num
+FROM movies m1
+WHERE m1.sequel_id is not null
+ORDER BY actor, release_year;
+
+SELECT name AS movie_name, actor, release_year
+FROM movies
+WHERE release_year BETWEEN 2018 AND 2023
+ORDER BY release_year;
+
+SELECT name AS movie_name, actor, release_year
+FROM movies
+WHERE genre = 'comedy'
+ORDER BY release_year;
+
+SELECT name AS movie_name, actor, release_year
+FROM movies
+WHERE genre = 'adventure'
+ORDER BY release_year;
+
+SELECT actor, COUNT(*) AS movie_count
+FROM movies
+GROUP BY actor
+ORDER BY movie_count DESC;
+
+SELECT actor, COUNT(*) AS sequel_movie_count
+FROM movies
+WHERE sequel_id IS NOT NULL
+GROUP BY actor
+ORDER BY sequel_movie_count DESC;
