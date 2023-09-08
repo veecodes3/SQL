@@ -57,39 +57,47 @@ INSERT INTO movies (id, name, actor, release_year, sequel_id, genre) VALUES
 SELECT * FROM moviestars
 Order BY age;
 
+--Show movie stars with their movies
 SELECT ms.fullname AS actor, m.name AS movie_name
 FROM moviestars ms
 JOIN movies m ON ms.fullname = m.actor;
 
+--Narrow down relevant information
 SELECT m.name AS movie_name, ms.fullname AS actor_name, m.release_year, sequel_id, m.genre
 FROM movies m
 JOIN moviestars ms ON m.actor = ms.fullname;
 
+--Dispaly movies with sequels
 SELECT m1.name AS movie_name, m1.actor AS actor, m1.release_year AS release_year, m1.sequel_id AS movie_num
 FROM movies m1
 WHERE m1.sequel_id is not null
 ORDER BY actor, release_year;
 
+--Which movies were released in the last 5 years?
 SELECT name AS movie_name, actor, release_year
 FROM movies
 WHERE release_year BETWEEN 2018 AND 2023
 ORDER BY release_year;
 
+--Which movies fall under the comedy genre?
 SELECT name AS movie_name, actor, release_year
 FROM movies
 WHERE genre = 'comedy'
 ORDER BY release_year;
 
+--Which movies fall under the adventure genre?
 SELECT name AS movie_name, actor, release_year
 FROM movies
 WHERE genre = 'adventure'
 ORDER BY release_year;
 
+--How many movies does each actor appear in?
 SELECT actor, COUNT(*) AS movie_count
 FROM movies
 GROUP BY actor
 ORDER BY movie_count DESC;
 
+--How many movies does each actor have with sequels?
 SELECT actor, COUNT(*) AS sequel_movie_count
 FROM movies
 WHERE sequel_id IS NOT NULL
