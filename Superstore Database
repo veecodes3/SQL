@@ -56,7 +56,7 @@ FROM superstore
 ORDER BY price
 LIMIT 1;
 
---How many itmes are currenlty in stock for each product?
+--How many itmes are currently in stock for each product?
 SELECT item_name, stock_quantity
 FROM superstore
 ORDER BY stock_quantity desc;
